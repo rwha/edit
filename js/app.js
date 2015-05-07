@@ -244,3 +244,43 @@ var saveFile = function() {
 		});
 	});
 };
+
+function onApiLoad() {
+  gapi.load('auth', {'callback': onAuthApiLoad});
+  gapi.load('picker');
+}
+
+function onAuthApiLoad() {
+  window.gapi.auth.authorize({
+    'client_id': '263186723308-shunptq52u0idc98t3iedv4dots623jt.apps.googleusercontent.com',
+    'scope': ['https://www.googleapis.com/auth/drive']
+  }, handleAuthResult);
+}
+
+var oauthToken;
+
+function handleAuthResult(authResult) {
+  if(authResult && !authResult.error) {
+    oauthToken = authResult.access_token;
+    createPicker();
+  }
+}
+
+function createPicker() {
+  var picker = new google.picker.PickerBuilder()
+    .addView(new google.picker.DocsUploadView())
+    .addView(new google.picker.DocsView())
+    .setOAuthToken(oauthToken)
+    .setDeveloperKey('AIzaSyCFKWBoRqsf0TpNnspe2DcDX4-leu7oI14')
+    .setCallback(pickerCallback)
+    .build();
+  picker.setVisible(true);
+}
+
+function pickerCallback(data) {
+  if(data.action == google.picker.Action.PICKED){
+	console.log(data.docs[0].url);
+  }
+}
+
+

@@ -74,6 +74,7 @@
 					<li><a href="#" data-toggle="modal" data-target="#Diag" data-fileaction="save">Save as...</a></li>
 					<li class="divider"></li>
 					<li><a href="#" data-toggle="modal" data-target="#Diag" data-fileaction="open">Open</a></li>
+					<li><a href="#" data-target="#Diag" data-fileaction="open" onclick="createPicker()">Open from Drive</a></li>
 					<li class="divider"></li>
 					<li><a href="#">Recent</a></li>
 					<li class="divider"></li>
@@ -112,5 +113,7 @@
 <script src="js/ace/ext-modelist.js"></script>
 <script src="js/filer.js"></script>
 <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>
+
 </body>
 </html>
