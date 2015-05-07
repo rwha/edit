@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>code editor</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-select.min.css">
+</head>
+<body>
+<!-- file action dialog -->
+<div class="modal fade" id="Diag" tabindex="-1" role="dialog" aria-labelledby="saveLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="file_action_title"></h4>
+			</div>
+			<div class="modal-body">
+				<div id="filesystem">
+					<ol id="cwd" class="breadcrumb"></ol>
+					<div id="filelist" class="list-group"></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="input-group input-group-sm" id="file_name_group">
+					<span class="input-group-addon" id="currentpath"></span>
+					<input type="text" class="form-control" placeholder="File name" aria-describedby="currentpath" id="new_file_name">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-primary" id="file_action_button" onclick="saveFile()"></button>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- delete shit -->
+<div class="modal fade" id="delDiag" tabindex="-1" role="dialog" aria-labelledby="saveLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="delete_action_title">click item to delete</h4>
+			</div>
+			<div class="modal-body">
+				<div id="filesystem_del">
+					<ol id="cwd_del" class="breadcrumb"></ol>
+					<div id="filelist_del" class="list-group"></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">done</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#"> </a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					file <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#" data-target="#Diag" data-fileaction="save" onclick="newFile()">New</a></li>
+					<li class="divider"></li>
+					<li><a href="#" data-target="#Diag" data-fileaction="save" onclick="saveCurrent()">Save</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#Diag" data-fileaction="save">Save as...</a></li>
+					<li class="divider"></li>
+					<li><a href="#" data-toggle="modal" data-target="#Diag" data-fileaction="open">Open</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Recent</a></li>
+					<li class="divider"></li>
+					<li><a href="#" data-toggle="modal" data-target="#delDiag">Delete...</a></li>
+
+				</ul>
+			</li>
+			<li class="dropdown">
+				<div class="navbar-btn">
+					<select id="theme" class="selectpicker" data-live-search="true"></select>
+				</div>
+			</li>
+
+			<li class="dropdown">
+				<div class="navbar-btn" style="padding-left: 20px;">
+					<select id="mode" class="selectpicker" data-live-search="true"></select>
+				</div>
+			</li>
+
+		</ul>
+		<p id="file_info" class="navbar-text navbar-right">
+			<span id="file_name">untitled</span>
+			<span id="file_status">new</span>
+			<!--<span id="file_size">0</span>-->
+		</p>
+	</div>
+</nav>
+
+<div id="editor"></div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-select.min.js"></script>
+<script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/ace/ext-themelist.js"></script>
+<script src="js/ace/ext-modelist.js"></script>
+<script src="js/filer.js"></script>
+<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

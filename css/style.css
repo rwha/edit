@@ -1,0 +1,42 @@
+body {
+	overflow: hidden;
+	font-family: sans-serif;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	overflow: visible;
+}
+
+::-webkit-scrollbar-track {
+	background-clip: padding-box;
+	border: solid transparent;
+	border-width: 0 0 0 4px;
+}
+::-webkit-scrollbar-thumb {
+	border-width: 1px 1px 1px 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,.2);
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 1px 1px 1px 6px;
+    min-height: 28px;
+    padding: 100px 0 0;
+    box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
+}
+
+#file_info span{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#editor {
+	margin: 0;
+	position: absolute;
+	top: 50px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
